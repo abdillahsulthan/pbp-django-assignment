@@ -1,45 +1,42 @@
 # PENJELASAN TUGAS 3
 
+
 **Link aplikasi Heroku HTML Tugas 3 PBP**: https://webnyakatabtugas2.herokuapp.com/mywatchlist/html/
+
 **Link aplikasi Heroku XML Tugas 3 PBP**: https://webnyakatabtugas2.herokuapp.com/mywatchlist/xml/
+
 **Link aplikasi Heroku JSON Tugas 3 PBP**: https://webnyakatabtugas2.herokuapp.com/mywatchlist/json/
 
-**1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html**
 
-![BAGAN MVT](https://user-images.githubusercontent.com/112261948/189924116-b0236873-5685-46b5-84c5-0f0bddb2d0c2.png)
+**1. Jelaskan perbedaan antara JSON, XML, dan HTML!**
 
-Penjelasan bagan → _User_ akan melakukan _request_ dimana _request_ ini akan diproses pertama kali oleh konfigurasi URL atau “urls.py”, proses ini dilakukan karena pada tahap inilah terdapat definisi alamat rute (URL) dan fungsi yang akan dijalankan di setiap rute. Selanjutnya, _request_ akan dilanjutkan ke views.py, dimana pada views ini akan terjadi beberapa pemrosesan yaitu menulis atau mengambil data dari model, mengelola tampilan data dengan template html, serta mengirim _HTTP Response_ ke _user_.
+JSON adalah singkatan dari JavaScript Object Notation. JSON didesain menjadi self-describing, sehingga JSON sangat mudah untuk dimengerti. JSON digunakan pada banyak aplikasi web maupun mobile, yaitu untuk menyimpan dan mengirimkan data. Sintaks JSON merupakan turunan dari Object JavaScript. Akan tetapi format JSON berbentuk text, sehingga kode untuk membaca dan membuat JSON banyak terdapat dibanyak bahasa pemrograman. Data pada JSON disimpan dalam bentuk key dan value. Pada contoh di atas yang menjadi key adalah brand, type, color, dan memory. Value dapat berupa tipe data primitif (string, number, boolean) ataupun berupa objek.
 
-**2. Jelaskan kenapa menggunakan _virtual environment_? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan _virtual environment_?**
+XML adalah singkatan dari eXtensible Markup Language. XML didesain menjadi self-descriptive, jadi dengan membaca XML tersebut kita bisa mengerti informasi apa yang ingin disampaikan dari data yang tertulis. XML digunakan pada banyak aplikasi web maupun mobile, yaitu untuk menyimpan dan mengirimkan data. XML hanyalah informasi yang dibungkus di dalam tag. Kita perlu menulis program untuk mengirim, menerima, menyimpan, atau menampilkan informasi tersebut. Dokumen XML membentuk struktur seperti tree yang dimulai dari root, lalu branch, hingga berakhir pada leaves. Dokumen XML harus mengandung sebuah root element yang merupakan parent dari elemen lainnya.
 
-Pada dasarnya, penggunaan _virtual environment_ bersifat opsional. Namun, penggunaannya sangat direkomendasikan dalam pengembangan sebuah web berbasis Django. _Virtual environment_ merupakan sebuah ruang lingkup virtual yang terisolasi dari _dependencies_ utama. _Virtual environment_ ini sangat berguna ketika kita membutuhkan _dependencies_ yang berbeda pada setiap _project_ yang akan dikembangkan pada _operating system_ yang sama. Sehingga, _virtual environment_ dibutuhkan untuk menjalankan suatu _project_, tanpa merubah konfigurasi _operating system_ yang kita gunakan. Kesimpulan yang bisa didapat adalah bahwa kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan _virtual environment_. Namun, apabila _project_ yang ingin dikembangkan banyak dan memiliki _package_ yang berbeda dapat menyebabkan _crash_ pada _operating system_ yang kita miliki.
+HTML atau Hypertext Markup Language merupakan sebuah bahasa untuk mengembangkan website. Kode HTML tersebut memastikan format teks dan gambar yang tepat untuk browser Internet. Tanpa HTML, browser tidak akan tahu bagaimana menampilkan teks sebagai elemen atau memuat gambar atau elemen lainnya.
 
-**3. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.**
+**2. Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform??**
 
-**1) Membuat sebuah fungsi pada views.py yang dapat melakukan pengambilan data dari model dan dikembalikan ke dalam sebuah HTML**
-  
-Pada views.py saya membuat sebuah fungsi show_katalog yang akan digunakan untuk me-_return_ _HTTP Response_, sehingga data yang terkandung dapat muncul pada file.html.   Selain itu, saya meng-_import_ data dari models.py untuk menetukan struktur data yang akan disimpan seperti ukuran maksimum. Pada fungsi show_katalog saya menambahkan variabel nama dan npm yang disimpan pada dictionary context, variabel ini akan digunakan pada file html.
+Dalam mengembangkan suatu platform, ada kalanya kita perlu mengirimkan data dari satu stack ke stack lainnya. Data yang dikirimkan bisa bermacam-macam bentuknya. Beberapa contoh format data yang umum digunakan antara lain HTML, XML, dan JSON.
 
-**2) Membuat sebuah routing untuk memetakan fungsi yang telah kamu buat pada views.py**
+**3. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas.**
 
-Fungsi yang telah dibuat pada views.py selanjutnya akan dipetakan ke URL melalui urls.py, pemetaan ini akan membuat sebuah rute atau path dari URL katalog ke URL project. Jadi, pada awalnya saya membuat _pattern_ URL pada URL katalog untuk pemetaan ke URL Project, selanjutnya saya mendaftarkan path URL katalog tadi pada URL project, agar tampilan html bisa ditampilkan pada website
+Pada tugas kali ini, pertama kali saya membuat aplikasi "mywatchlist" pada command prompt, lalu saya mendaftarkan aplikasi tersebut kedalam project_django di settings.py. Lalu, saya membuat model dari mywatchlist pada models.py. Model tersebut lalu saya lakukan migrations dan migrate pada CMD. Selanjutnya, saya membuat folder fixtures pada mywatchlist dengan isi file initial_mywatchlist_data.json untuk menginput 10 data film. Lalu, saya meload data untuk dimasukkan kedalam database django lokal.
 
-**3) Memetakan data yang didapatkan ke dalam HTML dengan sintaks dari Django untuk pemetaan data template**
+Langkah selanjutnya adalah implementasi MVT. Pertama saya membuat kode pada views.py di folder mywatchlist untuk dimapping ke URL lalu ditampilkan di HTML. Lalu, saya membuat file html untuk menampilkan data-data film pada website. Selanjutnya, saya membuat urls.py pada mywatchlist. URLS ini saya akan daftarkan pada project_django. Akhirnya, website yang kita buat akan ditampilkan pada website.
 
-Pada halaman html saya melakukan for loop terhadap data list_barang yang telah saya definisikan pada views.py, dimana for loop ini disediakan oleh Django lewat aturan sintaks khusus yang telah dibuat. Selain itu, saya juga menggunakan sintaks khusus “{{data}}” untuk mengambil nama dan npm yang telah saya buat pada views.py
+Langkah selanjutnya adalah implementasi Data delivery menggunakan JSON dan XML. Pertama, saya melakukan import HttpResponse dan serializer pada views.py serta membuat fungsi untuk menampilkan xml, json, xml berdasarkan id, dan json berdasarkan id. Lalu, setelah selesai saya memetakannya ke urls.py pada mywatchlist agar bisa diakses. Checklist-checklist yang telah dikerjakan akan dipush ke dalam repo dan dilakukan proses deploy heroku
 
-**4) Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.**
+**POSTMAN**
+1. HTML
 
-Berkas - berkas yang digunakan pada proses _deployment_ ini adalah Procfile, file ini digunakan oleh Heroku untuk membaca aktivitas log aplikasi ke sistem _monitoring_ internal Heroku. Lalu file dpl.yml, file ini digunakan untuk mengeksekusi _deployment_ oleh saya dari GitHub Actions. Selain itu, saya juga menambahkan konfigurasi berikut pada settings.py pada project_django,
+![html](https://user-images.githubusercontent.com/112261948/191533902-22c4c7bd-00ed-4cc5-80a7-71b8d2783cff.jpg)
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+2. XML
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+![xml](https://user-images.githubusercontent.com/112261948/191534135-25bd7038-c97f-467b-bf5c-32abea722331.jpg)
 
-Selanjutnya, saya mengambil API Key dari Heroku dan membuat aplikasi baru pada Heroku. Lalu, saya mendaftarkan API Key dan nama aplikasi tersebut kedalam repository secret yang saya miliki. Informasi ini akan berguna untuk mendefinisikan variabel API Key serta APP Name pada file dpl.yml. Dan akhirnya, saya menjalankan workflow dan proses deployment berhasil
+3. JSON
 
-SUMBER REFERENSI: 
-
-https://www.petanikode.com/django-untuk-pemula/
-
-https://dev.notnoob.com/tutorial-virtual-environment/
+![json](https://user-images.githubusercontent.com/112261948/191534208-c8ecceb5-61b4-4e52-a99d-2fe50b39c6e7.jpg)

@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched":"Sudah",
+            "title":"Unbroken",
+            "rating":4,
+            "release_date":"2014",
+            "review":"alur ceritanya bagus!! seluruh aktor totalitas dalam memainkan peran"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":2,
+        "fields":{
+            "watched":"Belum",
+            "title":"Sayap-Sayap Patah",
+            "rating":5,
+            "release_date":"2022",
+            "review":"Belum ditonton"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":3,
+        "fields":{
+            "watched":"Sudah",
+            "title":"Miracle in Cell No.7",
+            "rating":5,
+            "release_date":"2022",
+            "review":"kisah yang disajikan sangat bermakna, big applause buat pemeran utama atas totalitasnya"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":4,
+        "fields":{
+            "watched":"Sudah",
+            "title":"The Godfather",
+            "rating":5,
+            "release_date":"1972",
+            "review":"genre film sangat saya sukai, alur ceritanyaa tidak membosankann"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":5,
+        "fields":{
+            "watched":"Belum",
+            "title":"Into the Woods",
+            "rating":3,
+            "release_date":"2014",
+            "review":"Belum ditonton"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":6,
+        "fields":{
+            "watched":"Sudah",
+            "title":"The Devils Advocate",
+            "rating":4,
+            "release_date":"1997",
+            "review":"penyajian antara horror dan kisah hidup yang menarikk!!"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":7,
+        "fields":{
+            "watched":"Sudah",
+            "title":"Avengers: Endgame",
+            "rating":5,
+            "release_date":"2019",
+            "review":"sebagai last sequence dari Avengers terbaik !!!"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":8,
+        "fields":{
+            "watched":"Belum",
+            "title":"Jurassic World Dominion",
+            "rating":3,
+            "release_date":"2022",
+            "review":"Belum ditonton"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":9,
+        "fields":{
+            "watched":"Sudah",
+            "title":"Top Gun: Maverick",
+            "rating":5,
+            "release_date":"2022",
+            "review":"alur cerita simple dan seruu!!"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":10,
+        "fields":{
+            "watched":"Sudah",
+            "title":"The Black Phone",
+            "rating":4,
+            "release_date":"2021",
+            "review":"cerita punya plot twist yang cukup mengejutkan, namun ada sedikit alur cerita yang melompat, tapi keseluruhan nih film bagus"
+        }
+    }
+]

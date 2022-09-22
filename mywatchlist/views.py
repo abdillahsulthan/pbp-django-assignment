@@ -9,8 +9,21 @@ def show_mywatchlist(request):
     context = {
     'list_movie': data_film_mywatchlist,
     'nama': 'Abdillah Sulthan Naufal Panggabean',
-    'npm' : '2106637555'
+    'npm' : '2106637555',
+    'info':''
     }
+    jumlah_film = 0
+
+    for film in data_film_mywatchlist:
+        if film.watched == "Sudah":
+            jumlah_film += 1
+    
+    if jumlah_film >= (len(data_film_mywatchlist)/2):
+        context["info"] += "Selamat, kamu sudah banyak menonton!"
+    
+    else:
+        context["info"] += "Wah, kamu masih sedikit menonton!"
+    
     return render(request, "mywatchlist.html", context)
 
 def show_xml(request):

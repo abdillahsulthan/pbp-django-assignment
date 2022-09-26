@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">My To Do List</h1>
+<p></p>
+<table bgcolor="black" style="width: 600px; text-align: center; margin: auto;">
+    <tr bgcolor="grey">
+    <th>Tanggal</th>
+    <th>Judul</th>
+    <th>Deskripsi</th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for todo in data_todolist %}
+    <tr bgcolor="lightgrey">
+        <td>{{todo.date}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.description}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p></p>
+
+<button style="display: block; margin: auto; width: 200px;"><a href="{% url 'todolist:add_todolist' %}">Tambahkan Todolist Baru</a></button>
+<p></p>
+<button style="display: block; margin: auto;"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}

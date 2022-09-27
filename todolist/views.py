@@ -15,9 +15,25 @@ from django.urls import reverse
 def show_todolist(request):
     data_todolist_user = Task.objects.filter(user=request.user)
     context = {
-        'data_todolist': data_todolist_user
+        'data_todolist': data_todolist_user,
+        'user_name': request.user
     }
     return render(request, "todolist.html", context)
+
+def delete_task(request,id):
+    task = Task.objects.filter(user=request.user).get(pk=id)
+    task.delete()
+    return redirect('todolist:show_todolist')
+
+def set_status(request,id):
+    task = Task.objects.filter(user=request.user).get(pk=id)
+    if task.is_finished == "Belum":
+        task.is_finished = "Sudah"
+        task.save()
+    else:
+        task.is_finished = "Belum"
+        task.save()
+    return redirect('todolist:show_todolist')
 
 def add_todolist(request):
     if request.method == "POST":

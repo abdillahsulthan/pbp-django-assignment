@@ -2,20 +2,26 @@
 
 {% block content %}
 <h1 style="text-align: center;">My To Do List</h1>
+<h2 style="text-align: center">Hello, {{user_name}}😊</h2>
 <p></p>
 <table bgcolor="black" style="width: 600px; text-align: center; margin: auto;">
     <tr bgcolor="grey">
-    <th>Tanggal</th>
-    <th>Judul</th>
-    <th>Deskripsi</th>
+    <th style="width: 100px;">Tanggal</th>
+    <th style="width: 100px;">Judul</th>
+    <th style="width: 180px;">Deskripsi</th>
+    <th style="width: 80px;">Status</th>
+    <th colspan="2">Ubah Status Tugas</th>
     </tr>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
     {% for todo in data_todolist %}
-    <tr bgcolor="lightgrey">
-        <td>{{todo.date}}</td>
-        <td>{{todo.title}}</td>
-        <td>{{todo.description}}</td>
-    </tr>
+        <tr bgcolor="lightgrey">
+            <td>{{todo.date}}</td>
+            <td>{{todo.title}}</td>
+            <td>{{todo.description}}</td>
+            <td>{{todo.is_finished}}</td>
+            <td><button style="width: 110px;"><a href="{% url 'todolist:set_status' todo.id %}">Ubah Status</a></button></td>
+            <td><button style="width: 110px;"><a href="{% url 'todolist:delete_task' todo.id %}">Hapus</a></button></td>
+        </tr>
     {% endfor %}
 </table>
 

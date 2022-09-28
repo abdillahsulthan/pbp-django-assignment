@@ -1,10 +1,18 @@
 <style>
     body {
-        background-color:#6b6b6b;
-    }
+        background: linear-gradient(45deg, blue, purple,cyan);    }
 
     h3 {
-        font-family: sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: center;
+        color: white;
+    }
+
+    h1 {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: center;
+        color: white;
+        text-decoration: underline;
     }
 
     .button {
@@ -17,7 +25,7 @@
         color: #111;
         cursor: pointer;
         display: flex;
-        font-family: Inter,sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 16px;
         height: 48px;
         justify-content: center;
@@ -77,16 +85,16 @@
 
 <div class = "login">
     
-    <h1 style="font-family: sans-serif; text-align: center;">Mau ngapain hari ini?</h1>  
+    <h1>Kamu mau ngapain hari ini?</h1>  
 
         <form method="POST" >  
             {% csrf_token %}  
             <table>  
-                <h3 style="text-align: center;">Judul</h3>
+                <h3>Judul</h3>
                 <input type="text" id="title" name="title" style="width: 250px; display: block; margin: auto; border-radius: 10px;">
                 <p></p>
 
-                <h3 style="text-align: center;">Deskripsi</h3>
+                <h3>Deskripsi</h3>
                 <input type="text" id="description" name="description" style="width: 250px; display: block; margin: auto; height: 60px; border-radius: 10px;">
                 <p></p>
 

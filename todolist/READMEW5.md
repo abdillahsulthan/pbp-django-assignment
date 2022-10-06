@@ -1,6 +1,6 @@
-# PENJELASAN TUGAS 4
+# PENJELASAN TUGAS 5
 
-**Link aplikasi Heroku TODOLIST Tugas 4 PBP** : https://webnyakatabtugas2.herokuapp.com/todolist/
+**Link aplikasi Heroku TODOLIST Tugas 5 PBP** : https://webnyakatabtugas2.herokuapp.com/todolist/
 
 **1. Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style**
 

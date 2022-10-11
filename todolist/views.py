@@ -103,7 +103,6 @@ def add_task_ajax(request):
 
 @csrf_exempt
 def delete_task_ajax(request,id):
-    if(request.method == 'DELETE'):
-        task = Task.objects.filter(pk=id)   
-        task.delete()
+    task = Task.objects.filter(pk=id)   
+    task.delete()
     return JsonResponse({"task": "todolist dihapus"},status=200)

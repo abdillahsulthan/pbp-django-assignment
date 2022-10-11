@@ -79,22 +79,27 @@
             type: "GET",
             dataType: "json",
             success: function(data){
-                for (i of data){
-                    console.log(data)
-                    todolist += `
-                    <div class="col-auto mb-3">
-                        <div class="card border-primary mx-auto" style="width: 18rem; background-color: rgb(67, 65, 65);">
-                            <div class="card-body text-light">
-                                <h3 class="card-title">${i.fields.title}</h3>
-                                <h6 class="card-text">${i.fields.date}</h6>
-                                <p class="card-text">Description: ${i.fields.description}</p>
-                                <p class="card-text">Status: ${i.fields.is_finished}</p>
-                                <a class="btn login_btn btn btn-secondary form-control lg mt-3" href="set_status/${i.pk}">Ubah Status</a>
-                                <a class="btn login_btn btn btn-danger form-control lg mt-2" onclick="deleteTask(${i.pk})">Hapus</a>
+                if(data == 0) {
+                    $('#container').html("")
+                }
+                else {
+                    for (i of data){
+                        console.log(data)
+                        todolist += `
+                        <div class="col-auto mb-3">
+                            <div class="card border-primary mx-auto" style="width: 18rem; background-color: rgb(67, 65, 65);">
+                                <div class="card-body text-light">
+                                    <h3 class="card-title">${i.fields.title}</h3>
+                                    <h6 class="card-text">${i.fields.date}</h6>
+                                    <p class="card-text">Description: ${i.fields.description}</p>
+                                    <p class="card-text">Status: ${i.fields.is_finished}</p>
+                                    <a class="btn login_btn btn btn-secondary form-control lg mt-3" href="set_status/${i.pk}">Ubah Status</a>
+                                    <a class="btn login_btn btn btn-danger form-control lg mt-2" onclick="deleteTask(${i.pk})">Hapus</a>
+                                </div>
                             </div>
-                        </div>
-                    </div>`;
-                    $('#container').html(todolist)
+                        </div>`;
+                        $('#container').html(todolist)
+                    }
                 }
             },
             error: function(data) {
@@ -107,9 +112,10 @@
         $.ajax({
             url: `/todolist/delete/${pk}`,
             type: "DELETE",
-            csrfmiddlewaretoken: "{{ csrf_token }}",
-            success: function() {
+            success: function(data) {
+                console.log(data)
                 $(`#${pk}`).remove()
+                show_card()
             }
         })
     }

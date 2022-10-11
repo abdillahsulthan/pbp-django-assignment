@@ -1,4 +1,5 @@
 import datetime
+import json
 from todolist.models import Task
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -9,6 +10,9 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core import serializers
+from django.http.response import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/todolist/login/')
@@ -80,3 +84,26 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+@login_required(login_url='/todolist/login/')
+def show_json(request):
+    task = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', task), content_type='application/json')
+
+def add_task_ajax(request):
+    title = request.POST.get('title')
+    description = request.POST.get('description')
+    add_todolist = Task(
+        user = request.user,
+        title = title,
+        description = description,
+    )
+    add_todolist.save()
+    return JsonResponse({"task": "todolist baru"},status=200)
+
+@csrf_exempt
+def delete_task_ajax(request,id):
+    if(request.method == 'DELETE'):
+        task = Task.objects.filter(pk=id)   
+        task.delete()
+    return JsonResponse({"task": "todolist dihapus"},status=200)

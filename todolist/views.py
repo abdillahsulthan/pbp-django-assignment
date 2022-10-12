@@ -99,10 +99,10 @@ def add_task_ajax(request):
         description = description,
     )
     add_todolist.save()
-    return JsonResponse({"task": "todolist baru"},status=200)
+    return JsonResponse({"task": "todolist baru"})
 
 @csrf_exempt
 def delete_task_ajax(request,id):
     task = Task.objects.filter(pk=id)   
     task.delete()
-    return JsonResponse({"task": "todolist dihapus"},status=200)
+    return JsonResponse({"task": "todolist dihapus"})

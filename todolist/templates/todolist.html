@@ -101,8 +101,8 @@
                                     <h3 class="card-title">${i.fields.title}</h3>
                                     <h6 class="card-text">${i.fields.date}</h6>
                                     <p class="card-text">Description: ${i.fields.description}</p>
-                                    <p class="card-text">Status: ${i.fields.is_finished}</p>
-                                    <a class="btn login_btn btn btn-secondary form-control lg mt-3" href="set_status/${i.pk}">Ubah Status</a>
+                                    <p class="card-text" id="status-${i.pk}">Status: ${i.fields.is_finished}</p>
+                                    <a class="btn login_btn btn btn-secondary form-control lg mt-3" onclick="updateTaskStatus(${i.pk})">Ubah Status</a>
                                     <a class="btn login_btn btn btn-danger form-control lg mt-2" onclick="deleteTask(${i.pk})">Hapus</a>
                                 </div>
                             </div>
@@ -116,6 +116,21 @@
             }
         })
     }
+
+    function updateTaskStatus(pk){
+    $.ajax({
+        url: `/todolist/set/${pk}/`,
+        type: "POST",
+        credentials: "include",
+        success: function(data) {
+            let innerHTML = document.getElementById(`status-${pk}`).innerHTML.toString().trim();
+            let statusUpdate = (innerHTML == "Belum") ? "Sudah" : "Belum"
+            let innerHTMLNew = `<h6 class="card-text" id="status-${pk}"> ${statusUpdate}</h6>`
+            $(`#status-${pk}`).html(innerHTMLNew);
+            show_card();
+        }
+    })
+  }
 
     function deleteTask(pk){
         $.ajax({

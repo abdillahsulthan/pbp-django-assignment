@@ -106,3 +106,14 @@ def delete_task_ajax(request,id):
     task = Task.objects.filter(pk=id)   
     task.delete()
     return JsonResponse({"task": "todolist dihapus"})
+
+@csrf_exempt
+def set_status_ajax(request,id):
+    task = Task.objects.filter(user=request.user).get(pk=id)
+    if task.is_finished == "Belum":
+        task.is_finished = "Sudah"
+        task.save()
+    else:
+        task.is_finished = "Belum"
+        task.save()
+    return JsonResponse({"task": "todolist diupdate"})
